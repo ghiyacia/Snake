@@ -61,14 +61,6 @@ window.onload = function(){
         ctx.strokeRect(x*snakeW, y*snakeH, snakeW, snakeH);
     }
 
-    function checkCollision(x, y, array){
-        for (let i = 0; i < array.length; i++) {
-            if (x == array[i].x && y == array[i].y) {
-                return true;
-            }           
-        }
-        return false;
-    }
     function draw(){
         ctx.clearRect(0, 0, canvaW, canvaH);
         for (let i = 0; i < snake.length; i++) {
@@ -84,13 +76,9 @@ window.onload = function(){
         // console.log(checkCollision(snakeX, snakeY, snake))
 
         // hits the wall
-        if(snakeX < 0 || snakeY < 0 || snakeX >= canvaW/snakeW || snakeY >= canvaH/snakeH || checkCollision(snakeX, snakeY, snake) != false){
-            // location.reload();
-            console.log ("sa fait mal")
+        if(snakeX < 0 || snakeY < 0 || snakeX >= canvaW/snakeW || snakeY >= canvaH/snakeH){
+            location.reload();
         }
-
-        //remove the snake tail
-        // snake.pop();
 
         // creat the new head 
         if (direction == 'left')snakeX--;
